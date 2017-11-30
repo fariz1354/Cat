@@ -442,7 +442,7 @@ def bot(op):
 
 #--------------------------------------------------------
             #-------------Fungsi Tagall User Start---------------#
-            elif msg.text in ["Tag all"]:
+            elif msg.text in ["Tagall","Tag"]:
               if msg.from_ in admin or owner:
                 group = cl.getGroup(msg.to)
                 nama = [contact.mid for contact in group.members]
