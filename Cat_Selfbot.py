@@ -431,7 +431,7 @@ def bot(op):
                 cl.sendMessage(msg)
 
 #--------------------------------------------------------
-            elif msg.text.lower() in ["Tagall",Tag","Dor"]:
+            elif msg.text.lower() in ["Tagall","Tag","Dor"]:
               if msg.from_ in admin:
                 group = cl.getGroup(msg.to)
                 nama = [contact.mid for contact in group.members]
@@ -710,7 +710,7 @@ def bot(op):
                         matched_list+=filter(lambda str: str == tag, gMembMids)
                     if matched_list == []:
                         cl.sendText(msg.to,"There was no blacklist user")
-                        return
+                        returnhip 
                     for jj in matched_list:
                         cl.kickoutFromGroup(msg.to,[jj])
                     cl.sendText(msg.to,"Blacklist emang pantas tuk di usir")
