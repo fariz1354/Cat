@@ -31,7 +31,7 @@ helpMessage ="""
 ╠❂͜͡➣ Autokick:on/off
 ╠❂͜͡➣ Contact:on/off
 ╠❂͜͡➣ Gift (1,2,3)
-╠❂͜͡➣ Tagall
+╠❂͜͡➣ Spam: 10 (text)
 ╠❂͜͡➣ Dosa (by tag)
 ╠❂͜͡➣ Pahala (by tag)
 ╠❂͜͡➣ Cn (text)
@@ -441,31 +441,24 @@ def bot(op):
                 cl.sendMessage(msg)
 
 #--------------------------------------------------------
-            #-------------Fungsi Tagall User Start---------------#
-            elif msg.text in ["Tagall","Tag"]:
-              if msg.from_ in admin or owner:
-                group = cl.getGroup(msg.to)
-                nama = [contact.mid for contact in group.members]
-                cb = ""
-                cb2 = "" 
-                strt = int(0)
-                akh = int(0)
-                for md in nama:
-                    akh = akh + int(6)
-                    cb += """{"S":"""+json.dumps(str(strt))+""","E":"""+json.dumps(str(akh))+""","M":"""+json.dumps(md)+"},"""
-                    strt = strt + int(7)
-                    akh = akh + 1
-                    cb2 += "@nrik \n"
-                cb = (cb[:int(len(cb)-1)])
-                msg.contentType = 0
-                msg.text = cb2
-                msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+cb+']}','EMTVER':'4'}
-                try:
-                    ki.sendMessage(msg)
-                except Exception as error:
-                    print error
-    
-    #-------------Fungsi Tagall User-------------#
+            elif "Spam: " in msg.text:
+              if msg.from_ in admin:
+                txt = msg.text.split(" ")
+                jmlh = int(txt[2])
+                teks = msg.text.replace("Spam: ")+str(txt[1])+" "+str(jmlh + " ","")
+                tulisan = jmlh * (teks+"\n")
+                 #@reno.a.w
+                if txt[1] == "on":
+                    if jmlh <= 1000000:
+                       for x in range(jmlh):
+                           cl.sendText(msg.to, teks)
+                    else:
+                       cl.sendText(msg.to, "Kelebihan batas:v")
+                elif txt[1] == "off":
+                    if jmlh <= 1000000:
+                        cl.sendText(msg.to, tulisan)
+                    else:
+                        cl.sendText(msg.to, "Kelebihan batas :v")
 #--------------------------CEK SIDER------------------------------
 
             elif "Setview" in msg.text:
