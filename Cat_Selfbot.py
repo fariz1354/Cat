@@ -31,7 +31,7 @@ helpMessage ="""
 ╠❂͜͡➣ Autokick:on/off
 ╠❂͜͡➣ Contact:on/off
 ╠❂͜͡➣ Gift (1,2,3)
-╠❂͜͡➣ Spam: 10 (text)
+╠❂͜͡➣ Spam on (nomer)(text)
 ╠❂͜͡➣ Dosa (by tag)
 ╠❂͜͡➣ Pahala (by tag)
 ╠❂͜͡➣ Cn (text)
