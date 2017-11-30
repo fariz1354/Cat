@@ -441,24 +441,24 @@ def bot(op):
                 cl.sendMessage(msg)
 
 #--------------------------------------------------------
-            elif "Spam: " in msg.text:
-              if msg.from_ in admin:
-                txt = msg.text.split(" ")
-                jmlh = int(txt[2])
-                teks = msg.text.replace("Spam: ")+str(txt[1])+" "+str(jmlh + " ","")
-                tulisan = jmlh * (teks+"\n")
-                 #@reno.a.w
-                if txt[1] == "on":
-                    if jmlh <= 1000000:
-                       for x in range(jmlh):
-                           cl.sendText(msg.to, teks)
-                    else:
-                       cl.sendText(msg.to, "Kelebihan batas:v")
-                elif txt[1] == "off":
-                    if jmlh <= 1000000:
-                        cl.sendText(msg.to, tulisan)
-                    else:
-                        cl.sendText(msg.to, "Kelebihan batas :v")
+            elif "Spam " in msg.text:
+                if msg.from_ in admin:
+                   txt = msg.text.split(" ")
+                   jmlh = int(txt[2])
+                   teks = msg.text.replace("Spamg "+str(txt[1])+" "+str(jmlh)+ " ","")
+                   tulisan = jmlh * (teks+"\n")
+                   #Keke cantik <3
+                   if txt[1] == "on":
+                        if jmlh <= 10000:
+                             for x in range(jmlh):
+                                   cl.sendText(msg.to, teks)
+                        else:
+                               cl.sendText(msg.to, "Out of range! ")
+                   elif txt[1] == "off":
+                         if jmlh <= 10000:
+                               cl.sendText(msg.to, tulisan)
+                         else:
+                               cl.sendText(msg.to, "Out of range! ")
 #--------------------------CEK SIDER------------------------------
 
             elif "Setview" in msg.text:
@@ -505,6 +505,7 @@ def bot(op):
 
 #KICK_BY_TAG
 	    elif "Boom " in msg.text:
+              if msg.from_ in admin:
 		if 'MENTION' in msg.contentMetadata.keys()!= None:
 		    names = re.findall(r'@(\w+)', msg.text)
 		    mention = ast.literal_eval(msg.contentMetadata['MENTION'])
@@ -533,6 +534,7 @@ def bot(op):
 		cl.sendText(msg.to,"Removed all chat")
 #--------------------------------------------------------
             elif ("Gn: " in msg.text):
+              if msg.from_ in admin:
                 if msg.toType == 2:
                     X = cl.getGroup(msg.to)
                     X.name = msg.text.replace("Gn: ","")
@@ -541,6 +543,7 @@ def bot(op):
                     cl.sendText(msg.to,"It can't be used besides the group.")
 #--------------------------------------------------------
             elif "Kick: " in msg.text:
+              if msg.from_ in admin:
                 midd = msg.text.replace("Kick: ","")
 		if midd not in admin:
 		    cl.kickoutFromGroup(msg.to,[midd])
@@ -557,6 +560,7 @@ def bot(op):
                 cl.sendText(msg.to,"Selamat datang di "+ gs.name)
 #--------------------------------------------------------
 	    elif "Bc: " in msg.text:
+.             if msg.from_ in admin:
 		bc = msg.text.replace("Bc: ","")
 		gid = cl.getGroupIdsJoined()
 		for i in gid:
@@ -564,12 +568,14 @@ def bot(op):
 		cl.sendText(msg.to,"Success BC BosQ")
 #--------------------------------------------------------
             elif msg.text in ["Cancelall"]:
+              if msg.from_ in admin:
                 gid = cl.getGroupIdsInvited()
                 for i in gid:
                     cl.rejectGroupInvitation(i)
                 cl.sendText(msg.to,"All invitations have been refused")
 #--------------------------------------------------------
             elif msg.text in ["Gurl"]:
+              if msg.from_ in admin:
                 if msg.toType == 2:
                     x = cl.getGroup(msg.to)
                     if x.preventJoinByTicket == True:
@@ -584,6 +590,7 @@ def bot(op):
                         cl.sendText(msg.to,"Not for use less than group")
 #--------------------------------------------------------
 	    elif msg.text in ["Self Like"]:
+              if msg.from_ in admin:
 		try:
 		    print "activity"
 		    url = cl.activity(limit=1)
@@ -598,23 +605,25 @@ def bot(op):
 			pass
 
 #--------------------------------------------------------
-            elif msg.text in ["Sp","Speed","speed"]:
+            elif msg.text in ["Speed","Sp"]:
+	      if msg.from_ in admin:
                 start = time.time()
-		print("Speed")
+                cl.sendText(msg.to, "loading...................")
                 elapsed_time = time.time() - start
-		cl.sendText(msg.to, "Progress...")
                 cl.sendText(msg.to, "%sseconds" % (elapsed_time))
-
 #--------------------------------------------------------
             elif msg.text in ["Ban"]:
+.             if msg.from_ in admin:
                 wait["wblacklist"] = True
                 cl.sendText(msg.to,"send contact")
 
             elif msg.text in ["Unban"]:
+              if msg.from_ in admin:
                 wait["dblacklist"] = True
                 cl.sendText(msg.to,"send contact")
 #--------------------------------------------------------
 	    elif "Backup me" in msg.text:
+              if msg.from_ in admin:
 		try:
 		    cl.updateDisplayPicture(profile.pictureStatus)
 		    cl.updateProfile(profile)
@@ -623,6 +632,7 @@ def bot(op):
 		    cl.sendText(msg.to, str(e))
 #--------------------------------------------------------
 	    elif "Copy " in msg.text:
+              if msg.from_ in admin:
                 copy0 = msg.text.replace("Copy ","")
                 copy1 = copy0.lstrip()
                 copy2 = copy1.replace("@","")
@@ -639,6 +649,7 @@ def bot(op):
 		
 #--------------------------------------------------------
             elif "Ban @" in msg.text:
+              if msg.from_ in admin:
                 if msg.toType == 2:
                     print "@Ban by mention"
                     _name = msg.text.replace("Ban @","")
@@ -664,7 +675,8 @@ def bot(op):
 				cl.sendText(msg.to,"Admin Detected~")
 #--------------------------------------------------------
             elif msg.text in ["Banlist"]:
-                if wait["blacklist"] == {}:
+              if msg.from_ in admin:
+               if wait["blacklist"] == {}:
                     cl.sendText(msg.to,"nothing")
                 else:
                     mc = ""
@@ -673,7 +685,8 @@ def bot(op):
                     cl.sendText(msg.to,"===[Blacklist User]===\n"+mc)
 
 #--------------------------------------------------------
-            elif "Unban @" in msg.text:
+            elif "Unban @" in msg.text
+              if msg.from_ in admin:
                 if msg.toType == 2:
                     print "@Unban by mention"
                     _name = msg.text.replace("Unban @","")
@@ -695,7 +708,8 @@ def bot(op):
                             except:
                                 cl.sendText(msg.to,"Succes BosQ")
 #--------------------------------------------------------
-            elif msg.text in ["Kill ban"]:
+            elif msg.text in ["Kill ban"]
+              if msg.from_ in admin:
                 if msg.toType == 2:
                     group = cl.getGroup(msg.to)
                     gMembMids = [contact.mid for contact in group.members]
@@ -733,6 +747,7 @@ def bot(op):
 #--------------------------------------------------------
 #Restart_Program
 	    elif msg.text in ["Bot:restart"]:
+              if msg.from_ in admin:
 		cl.sendText(msg.to, "Bot has been restarted")
 		restart_program()
 		print "@Restart"
