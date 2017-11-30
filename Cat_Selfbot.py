@@ -34,6 +34,7 @@ helpMessage ="""
 ╠❂͜͡➣ Tagall
 ╠❂͜͡➣ Dosa (by tag)
 ╠❂͜͡➣ Pahala (by tag)
+╠❂͜͡➣ Cn (text)
 ╠❂͜͡➣ Setview
 ╠❂͜͡➣ Viewseen
 ╠❂͜͡➣ Boom
@@ -309,6 +310,15 @@ def bot(op):
                 jawab = ("0%","20%","40%","50%","60%","Tak ada")
                 jawaban = random.choice(jawab)
                 cl.sendText(msg.to,"Pahalanya " + tanya + "adalah " + jawaban + "\nTobatlah nak")
+#---------------------------------------------
+            elif "Cn " in msg.text:
+              if msg.from_ in admin:
+                string = msg.text.replace("Cn ","")
+                if len(string.decode('utf-8')) <= 20:
+                    profile = cl.getProfile()
+                    profile.displayName = string
+                    cl.updateProfile(profile)
+                    cl.sendText(msg.to,"Update Names >" + string + "<")
 #--------------------------------------------------------
             elif msg.text in ["cancel","Cancel"]:
                 if msg.toType == 2:
@@ -431,40 +441,31 @@ def bot(op):
                 cl.sendMessage(msg)
 
 #--------------------------------------------------------
-            elif msg.text.lower() in ["Tagall","Tag","Dor"]:
-              if msg.from_ in admin:
+            #-------------Fungsi Tagall User Start---------------#
+            elif msg.text in ["Tag all"]:
+              if msg.from_ in admin or owner:
                 group = cl.getGroup(msg.to)
                 nama = [contact.mid for contact in group.members]
-                nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
-                if jml <= 100:
-                    mention(msg.to, nama)
-                    if jml > 100 and jml < 200:
-                        for i in range(0, 100):
-                            nm1 += [nama[i]]
-                    mention(msg.to, nm1)
-                    for j in range(101, len(nama)):
-                        nm2 += [nama[j]]
-                    mention(msg.to, nm2)
-                if jml > 200 and jml < 300:
-                    for i in range(0, 100):
-                        nm1 += [nama[i]]
-                    mention(msg.to, nm1)
-                    for j in range(101, 200):
-                        nm2 += [nama[j]]
-                    mention(msg.to, nm2)
-                    for k in range(201, len(nama)):
-                        nm3 += [nama[k]]
-                    mention(msg.to, nm3)
-                if jml > 300 and jml < 400:
-                    for i in range(0, 100):
-                        nm1 += [nama[i]]
-                    mention(msg.to, nm1)
-                    for j in range(101, 200):
-                        nm2 += [nama[j]]
-                    mention(msg.to, nm2)
-                    for k in range(201, 300):
-                        nm3 += [nama[k]]
-                    mention
+                cb = ""
+                cb2 = "" 
+                strt = int(0)
+                akh = int(0)
+                for md in nama:
+                    akh = akh + int(6)
+                    cb += """{"S":"""+json.dumps(str(strt))+""","E":"""+json.dumps(str(akh))+""","M":"""+json.dumps(md)+"},"""
+                    strt = strt + int(7)
+                    akh = akh + 1
+                    cb2 += "@nrik \n"
+                cb = (cb[:int(len(cb)-1)])
+                msg.contentType = 0
+                msg.text = cb2
+                msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+cb+']}','EMTVER':'4'}
+                try:
+                    ki.sendMessage(msg)
+                except Exception as error:
+                    print error
+    
+    #-------------Fungsi Tagall User-------------#
 #--------------------------CEK SIDER------------------------------
 
             elif "Setview" in msg.text:
