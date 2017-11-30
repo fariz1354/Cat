@@ -431,7 +431,7 @@ def bot(op):
                 cl.sendMessage(msg)
 
 #--------------------------------------------------------
-            elif msg.text.lower() in ["Tagall",Tag",Dor"]:
+            elif msg.text.lower() in ["Tagall",Tag","Dor"]:
               if msg.from_ in admin:
                 group = cl.getGroup(msg.to)
                 nama = [contact.mid for contact in group.members]
