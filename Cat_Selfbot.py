@@ -31,6 +31,7 @@ helpMessage ="""
 ╠❂͜͡➣ Autokick:on/off
 ╠❂͜͡➣ Contact:on/off
 ╠❂͜͡➣ Gift (1,2,3)
+╠❂͜͡➣ Ats
 ╠❂͜͡➣ Spam on (nomer)(text)
 ╠❂͜͡➣ Dosa (by tag)
 ╠❂͜͡➣ Pahala (by tag)
@@ -319,6 +320,41 @@ def bot(op):
                     profile.displayName = string
                     cl.updateProfile(profile)
                     cl.sendText(msg.to,"Update Names >" + string + "<")
+#--------------------------------------------------------
+            elif msg.text.lower() in ["Ats","Tag","mention all"]:
+              if msg.from_ in admin:
+                group = cl.getGroup(msg.to)
+                nama = [contact.mid for contact in group.members]
+                nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
+                if jml <= 100:
+                    mention(msg.to, nama)
+                    if jml > 100 and jml < 200:
+                        for i in range(0, 100):
+                            nm1 += [nama[i]]
+                    mention(msg.to, nm1)
+                    for j in range(101, len(nama)):
+                        nm2 += [nama[j]]
+                    mention(msg.to, nm2)
+                if jml > 200 and jml < 300:
+                    for i in range(0, 100):
+                        nm1 += [nama[i]]
+                    mention(msg.to, nm1)
+                    for j in range(101, 200):
+                        nm2 += [nama[j]]
+                    mention(msg.to, nm2)
+                    for k in range(201, len(nama)):
+                        nm3 += [nama[k]]
+                    mention(msg.to, nm3)
+                if jml > 300 and jml < 400:
+                    for i in range(0, 100):
+                        nm1 += [nama[i]]
+                    mention(msg.to, nm1)
+                    for j in range(101, 200):
+                        nm2 += [nama[j]]
+                    mention(msg.to, nm2)
+                    for k in range(201, 300):
+                        nm3 += [nama[k]]
+                
 #--------------------------------------------------------
             elif msg.text in ["cancel","Cancel"]:
                 if msg.toType == 2:
