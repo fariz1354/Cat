@@ -30,6 +30,10 @@ kc.loginResult()
 ks = LINETCR.LINE() 
 #ks.login(qr=True)
 ks.login(token="")#6
+ks.loginResult()
+
+satpam = LINETCR.LINE() 
+satpam.login(token="")#6
 #satpam.login(qr=True)
 satpam.loginResult() 
 
