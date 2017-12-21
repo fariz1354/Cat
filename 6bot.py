@@ -19,11 +19,10 @@ ki.login(token="")
 ki.loginResult() 
 
 kk = LINETCR.LINE() 
-#kk.login(qr=True)
 kk.login(token="")
 kk.loginResult()
 
-kc = LINETCR.LINE() 
+kc = LINETCR.LINE()
 #kc.login(qr=True)
 kc.login(token="")
 kc.loginResult() 
