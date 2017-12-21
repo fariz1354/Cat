@@ -11,3 +11,4 @@ pip install thrift==0.9.3
 ```
 
 #Edit by Cat_Bot
+#Edit by Fariz
