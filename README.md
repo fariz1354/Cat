@@ -1,13 +1,13 @@
-Forked from LINEALPHA [MerkKremont]
-
-fixing some error and delete unusable code 
-
-## Require to install
-```
-pip install rsa
-pip install request
-pip install thrift==0.9.3
-```
-
-#Edit by Cat_Bot
-#Edit by Fariz
+☯☯VPS GCLOUD FULL ROOT☯☯
+☯ CPU : 1 CORE
+☯ RAM : 2 GB
+☯ BANDWITDH : UNLIMTED
+☯ IP KE CYDUCK : IP DI GANTI
+☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯
+☯ PULSA : RP. 100k
+☯ XL
+☯ TSEL
+☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯
+☯ MINAT?
+☯ CHAT : https://goo.gl/CV5yxQ
+☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯☯
